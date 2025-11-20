@@ -2,7 +2,7 @@ name: test
 on: 
  # push: 
  #  branches: feature/test
- workflow_dispatch:
+   workflow_dispatch:
 
 jobs:
  build: 
