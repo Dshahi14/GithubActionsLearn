@@ -1,0 +1,16 @@
+name: test
+on: 
+ # push: 
+ #  branches: feature/test
+ workflow_dispatch:
+
+jobs:
+ build: 
+  runs-on: ubuntu-latest
+  steps:
+    - name: 'Checkout Github Action' 
+      uses: actions/checkout@v4
+    - name: Run a one-line script
+      run: echo Hello, world!
+   
+   
