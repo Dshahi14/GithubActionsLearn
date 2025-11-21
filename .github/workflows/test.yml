@@ -12,12 +12,12 @@ jobs:
     - name: 'Checkout Github Action' 
       uses: actions/checkout@v4
     - name: Run a one-line script
-      run: echo Hello, Build!
+      run: echo Hello, Bui!
       
  deploy: 
    needs: [build]
    runs-on: ubuntu-latest
-   if: ${{ github.ref == 'refs/heads/feature/test' }}
+   if: ${{ github.ref == 'refs/heads/main' && 'refs/heads/feature/test' && success() }}
    steps:
      - name: 'Checkout Github Action' 
        uses: actions/checkout@v4
