@@ -19,7 +19,7 @@ jobs:
    needs: [build]
    runs-on: ubuntu-latest
    environment: deploy
-   if: ${{ github.ref == 'refs/heads/main' && 'refs/heads/feature/test' }}
+   if: ${{ github.ref == 'refs/heads/main' || 'refs/heads/feature/test' }}
    steps:
      - name: 'Checkout Github Action' 
        uses: actions/checkout@v4
