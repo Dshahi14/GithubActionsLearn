@@ -14,11 +14,11 @@ jobs:
     - name: Run a one-line script
       run: |
          echo "Hello, Build!"
-         sleep 500
       
  deploy: 
    needs: [build]
    runs-on: ubuntu-latest
+   environment: deploy
    if: ${{ github.ref == 'refs/heads/main' && 'refs/heads/feature/test' }}
    steps:
      - name: 'Checkout Github Action' 
