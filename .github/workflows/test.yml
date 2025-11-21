@@ -12,7 +12,9 @@ jobs:
     - name: 'Checkout Github Action' 
       uses: actions/checkout@v4
     - name: Run a one-line script
-      run: ec Hello, Build!
+      run: |
+         echo "Hello, Build!"
+         sleep 10
       
  deploy: 
    needs: [build]
