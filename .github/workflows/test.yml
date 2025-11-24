@@ -1,27 +1,26 @@
-name: test
-on: 
- push: 
-  branches: feature/test
- workflow_dispatch:
+name: Test Azure OIDC Login
+
+on:
+  workflow_dispatch:  # Manual trigger
+
+permissions:
+  id-token: write      # Required for OIDC
+  contents: read       # Required for checkout
 
 jobs:
- build: 
-  runs-on: ubuntu-latest
-  if: ${{ github.ref == 'refs/heads/main' || github.ref == 'refs/heads/feature/test' }}
-  steps:
-    - name: 'Checkout Github Action' 
-      uses: actions/checkout@v4
-    - name: Run a one-line script
-      run: |
-         echo "Hello, Build!"
-      
- deploy: 
-   needs: [build]
-   runs-on: ubuntu-latest
-   environment: deploy
-   if: ${{ github.ref == 'refs/heads/main' || 'refs/heads/feature/test' }}
-   steps:
-     - name: 'Checkout Github Action' 
-       uses: actions/checkout@v4
-     - name: Run a one-line script
-       run: echo Hello, deploy!
+  test-azure-login:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Azure Login using OIDC
+        uses: azure/login@v2
+        with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
+      - name: Verify Azure Login
+        run: |
+          az account show
