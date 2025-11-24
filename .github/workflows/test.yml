@@ -12,6 +12,7 @@ permissions:
 jobs:
   test-azure-login:
     runs-on: ubuntu-latest
+    environment: deploy
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
