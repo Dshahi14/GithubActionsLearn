@@ -2,6 +2,8 @@ name: Test Azure OIDC Login
 
 on:
   workflow_dispatch:  # Manual trigger
+  push: 
+   branches: feature/test
 
 permissions:
   id-token: write      # Required for OIDC
