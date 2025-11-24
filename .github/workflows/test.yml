@@ -5,9 +5,9 @@ on:
   push: 
    branches: feature/test
 
-permissions:
-  id-token: write      # Required for OIDC
-  contents: read       # Required for checkout
+# permissions:
+#   id-token: write      # Required for OIDC
+#   contents: read       # Required for checkout
 
 jobs:
   test-azure-login:
