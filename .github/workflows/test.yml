@@ -5,8 +5,8 @@ on:
   push: 
    branches: feature/test
 
-# permissions:
-#   id-token: write      # Required for OIDC
+permissions:
+  id-token: write      # Required for OIDC
 #   contents: read       # Required for checkout
 
 jobs:
